@@ -2,10 +2,33 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import GoogleSingIn from '../../Components/GoogleSingIn';
+import auth from '../../firebase.config';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import Loading from '../../Components/Loading';
 
 const Register = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
+      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const onSubmit = async(data) => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({displayName:data.name})
+    }
+
+    if(user){
+        console.log(user)
+    };
+    if(loading || updating){
+        return <Loading/>
+    }
+    if(error || updateError ){
+        
+    }
     return (
         <div className="h-screen w-full flex justify-center items-center">
             <div className="w-full md:w-1/3 shadow-md rounded-xl p-10">

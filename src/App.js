@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import RequireAuth from "./Components/RequireAuth";
 import Blogs from "./Pages/Blogs/Blogs";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import AddReview from "./Pages/Dashboard/AddReview";
@@ -22,7 +23,9 @@ function App() {
      <Routes>
        <Route path='/' element={<Home/>}/>
        <Route path='home' element={<Home/>}/>
-       <Route path='dashboard' element={<Dashboard></Dashboard>}>
+       <Route path='dashboard' element={<RequireAuth>
+        <Dashboard/>
+       </RequireAuth>}>
          <Route path='myorder' element={<MyOrders/>}/>
          <Route path='addreview' element={<AddReview/>}/>
          <Route path='myprofile' element={<MyProfile/>}/>

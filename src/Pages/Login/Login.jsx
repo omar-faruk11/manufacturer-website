@@ -1,11 +1,32 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import GoogleSingIn from '../../Components/GoogleSingIn';
+import Loading from '../../Components/Loading';
+import auth from '../../firebase.config';
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+    const onSubmit = data => {
+        console.log(data);
+        signInWithEmailAndPassword(data.email, data.password);
+
+    };
+    
+    if (user) {
+        console.log(user);
+    }; 
+
+    if (loading) {
+        return <Loading />
+    };
     return (
         <div className="h-screen w-full flex justify-center items-center">
             <div className="w-full md:w-1/3 shadow-md rounded-xl p-10">
@@ -46,7 +67,7 @@ const Login = () => {
                             <span class="label-text ml-auto text-rose-400 font-semibold">Forget Password?</span>
                         </label>
                         <label class="label">
-                            
+
                         </label>
                     </div>
 

@@ -6,7 +6,7 @@ const Banner = () => {
             <div class="hero-overlay "></div>
             <div class="hero-content text-center text-white">
                 <div class="max-w-md">
-                    <h1 class="mb-5 text-5xl font-bold">Best Quality Auto Parts</h1>
+                    <h1 class="mb-5 text-5xl font-bold">Best Quality Car Parts</h1>
                     <p class="mb-5">Let us help you find what you need.</p>
                     <button class="btn btn-primary">Get Started</button>
                 </div>

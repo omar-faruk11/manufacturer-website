@@ -1,9 +1,14 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
+import auth from '../firebase.config';
 
 const Navication = () => {
+    const [user, loading, error] = useAuthState(auth);
+    console.log(user);
     return (
-        <div class="navbar bg-base-100">
+        <div class="navbar bg-base-100 fixed top-0 left-0 z-50">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -22,16 +27,22 @@ const Navication = () => {
                 </div>
                 <Link to='/' class="btn btn-ghost normal-case text-xl">Parts Master</Link>
             </div>
-            <div class="navbar-center hidden lg:flex nev-end">
-                <ul class="menu menu-horizontal p-0">
+            <div class="navbar-center hidden lg:flex navbar-end ">
+                <ul class="menu menu-horizontal p-0 ">
                     <li><NavLink to='/' className='mx-1'>Home</NavLink></li>
                     <li><NavLink to='/dashboard' className='mx-1'>Dashboard</NavLink></li>
                     <li><NavLink to='/blogs' className='mx-1'>Blogs</NavLink></li>
                     <li><NavLink to='/myportfolio'>My Portfolio</NavLink></li>
-                    <li><NavLink to='/login' className='mx-1'>Log In</NavLink></li>
+                    {
+                        !user ? <>
+                            <li><NavLink to='/login' className='mx-1'>Log In</NavLink></li>
+                        </> : <>
+                            <li><div className='text-rose-500'>{user.displayName}</div> </li>
+                            <li> <button onClick={()=> signOut(auth)} className="btn btn-ghost">Sign Out</button></li>
+                        </>
+                    }
                     {/* <li><NavLink to='/register' className='mx-1'>Register</NavLink></li> */}
-                    <li><div className='text-rose-500'>User Name</div> </li>
-                    <li> <button className="btn btn-ghost">Sign Out</button></li>
+
                 </ul>
             </div>
         </div>
