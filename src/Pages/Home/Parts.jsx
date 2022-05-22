@@ -14,7 +14,7 @@ const Parts = () => {
     
     return (
         <section className=' container mx-auto my-16'>
-            <h2 className=' text-center text-3xl font-semibold mb-8 text-rose-500 '>Parts</h2>
+            <h2 className=' text-center text-3xl font-semibold mb-8 text-rose-500 uppercase'>Parts</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-5">
             {
                 parts.map((part, index) =><Part key={index} part={part}/>)

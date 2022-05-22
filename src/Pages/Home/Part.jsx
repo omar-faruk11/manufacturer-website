@@ -11,7 +11,7 @@ const Part = ({ part }) => {
                     <p className='text-gray-500'>{description.slice(0,100)}</p>
                     <p className=' text-base capitalize '>minimum orders: {min_order}</p>
                     <p className=' text-base capitalize '>available: {available}</p>
-                    <p className=' text-base capitalize '> price: {price}</p>
+                    <p className=' text-base capitalize '> price: {price} (per item)</p>
                     <div class="card-actions justify-end">
                         <button class="btn w-full">book now</button>
                     </div>

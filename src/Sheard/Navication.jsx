@@ -30,7 +30,7 @@ const Navication = () => {
                     <li><NavLink to='/myportfolio'>My Portfolio</NavLink></li>
                     <li><NavLink to='/login' className='mx-1'>Log In</NavLink></li>
                     <li><NavLink to='/register' className='mx-1'>Register</NavLink></li>
-                    <li><div>User Name</div> </li>
+                    <li><div className='text-rose-500'>User Name</div> </li>
                     <li> <button className="btn btn-ghost">Sign Out</button></li>
                 </ul>
             </div>

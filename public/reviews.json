@@ -1,0 +1,38 @@
+[
+    {
+      "name": "Doyle Johnston",
+      "picture": "https://htmldemo.net/sharma/sharma/assets/images/product-image/8.jpg",
+      "review": "Consectetur amet sit veniam eu. Dolore eiusmod adipisicing occaecat officia velit.",
+      "star": 4
+    },
+    {
+      "name": "Vera Barton",
+      "picture": "https://htmldemo.net/sharma/sharma/assets/images/product-image/8.jpg",
+      "review": "Excepteur nostrud aliqua aliqua aute in excepteur in mollit quis voluptate culpa minim Lorem. Dolore velit consectetur irure occaecat quis consectetur minim irure eiusmod.",
+      "star": 1
+    },
+    {
+      "name": "Owens Brock",
+      "picture": "https://htmldemo.net/sharma/sharma/assets/images/product-image/8.jpg",
+      "review": "Non dolor pariatur irure adipisicing mollit nostrud duis duis commodo occaecat culpa voluptate cillum. Dolor in exercitation fugiat nisi sunt cillum pariatur nulla est magna dolore laborum ullamco occaecat.",
+      "star": 5
+    },
+    {
+      "name": "Aguilar Mcclure",
+      "picture": "https://htmldemo.net/sharma/sharma/assets/images/product-image/8.jpg",
+      "review": "Nulla excepteur nulla do Lorem id culpa minim eu. Do nulla aliqua proident occaecat incididunt id elit nulla aute commodo ea ad.",
+      "star": 4
+    },
+    {
+      "name": "Knapp Haley",
+      "picture": "https://htmldemo.net/sharma/sharma/assets/images/product-image/8.jpg",
+      "review": "Non reprehenderit culpa anim officia est id culpa. Qui minim eu exercitation officia incididunt.",
+      "star": 4
+    },
+    {
+      "name": "Rosetta Carney",
+      "picture": "https://htmldemo.net/sharma/sharma/assets/images/product-image/8.jpg",
+      "review": "Ullamco ea qui nulla excepteur tempor mollit sint laborum. Labore veniam id cupidatat labore nostrud ullamco ea ea deserunt.",
+      "star": 2
+    }
+  ]
