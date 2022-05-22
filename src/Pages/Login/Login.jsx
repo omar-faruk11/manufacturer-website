@@ -39,11 +39,11 @@ const Login = () => {
                         <input type="email" placeholder="Your email" class="input input-bordered w-full" {...register("email", {
                             required: {
                                 value: true,
-                                message: "Email is Required"
+                                message: "Pleace, Entete yuour Email"
                             },
                             pattern: {
                                 value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                message: 'Provide a valid Email'
+                                message: 'Invalid Email'
                             }
                         })} />
                         <label class="label">
@@ -54,17 +54,17 @@ const Login = () => {
 
                     <div>
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Password</span>
                         </label>
                         <input type="password" placeholder="password" class="input input-bordered w-full" {...register("password", {
                             required: {
                                 value: true,
-                                message: "Password is Required"
+                                message: "Please, Enter your Password"
                             }
                         })} />
                         <label class="label">
                             {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                            <span class="label-text ml-auto text-rose-400 font-semibold">Forget Password?</span>
+                            <span class="label-text ml-auto text-rose-400 font-semibold"><Link to='/resetPassword'>Forget Password?</Link> </span>
                         </label>
                         <label class="label">
 
@@ -73,7 +73,7 @@ const Login = () => {
 
                     <input className=' btn w-full' type="submit" value="LogIn" />
                 </form>
-                <p className='mt-2'>Already have an account? <Link className='text-rose-500 font-bold text-base' to="/register"> Register</Link></p>
+                <p className='mt-2'>Are you New? <Link className='text-rose-500 font-bold text-base' to="/register"> Register</Link></p>
                 <GoogleSingIn />
             </div>
 

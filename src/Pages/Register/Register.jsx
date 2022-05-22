@@ -89,13 +89,6 @@ const Register = () => {
                             {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                         </label>
                     </div>
-
-
-                    {/* include validation with required or other standard HTML validation rules */}
-
-                    {/* errors will return when field validation fails  */}
-                    {errors.exampleRequired && <span>This field is required</span>}
-
                     <input className=' btn w-full' type="submit" value="register" />
                 </form>
                 <p className='mt-2'>Already have an account? <Link className='text-rose-500 font-bold text-base' to="/login">  login</Link></p>

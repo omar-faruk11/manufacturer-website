@@ -15,6 +15,9 @@ import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 import Register from "./Pages/Register/Register";
 import Navication from "./Sheard/Navication";
+import ResetPassword from "./Pages/Login/ResetPassword"
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -37,9 +40,11 @@ function App() {
        <Route path='blogs' element={<Blogs/>}/>
        <Route path='myportfolio' element={<MyPortfolio/>}/>
        <Route path='login' element={<Login/>}/>
+       <Route path='resetPassword' element={<ResetPassword/>}/>
        <Route path='register' element={<Register/>}/>
        <Route path='*' element={<NotFoundPage/>}/>
      </Routes>
+     <ToastContainer/>
     </>
   );
 }

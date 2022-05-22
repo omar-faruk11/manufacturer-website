@@ -8,7 +8,7 @@ const Navication = () => {
     const [user, loading, error] = useAuthState(auth);
     console.log(user);
     return (
-        <div class="navbar bg-base-100 fixed top-0 left-0 z-50">
+        <div class="navbar bg-base-100 sticky top-0 left-0 z-50">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
