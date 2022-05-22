@@ -15,7 +15,7 @@ const Navication = () => {
                         <li><NavLink to='/blogs' className='mx-2'>Blogs</NavLink></li>
                         <li><NavLink to='/myportfolio'>My Portfolio</NavLink></li>
                         <li><NavLink to='/login' className='mx-2'>Log In</NavLink></li>
-                        <li><NavLink to='/register' className='mx-2'>Register</NavLink></li>
+                        {/* <li><NavLink to='/register' className='mx-2'>Register</NavLink></li> */}
                         <li> <button className="btn btn-ghost">Sign Out</button></li>
                         <li><button>User Name</button> </li>
                     </ul>
@@ -29,7 +29,7 @@ const Navication = () => {
                     <li><NavLink to='/blogs' className='mx-1'>Blogs</NavLink></li>
                     <li><NavLink to='/myportfolio'>My Portfolio</NavLink></li>
                     <li><NavLink to='/login' className='mx-1'>Log In</NavLink></li>
-                    <li><NavLink to='/register' className='mx-1'>Register</NavLink></li>
+                    {/* <li><NavLink to='/register' className='mx-1'>Register</NavLink></li> */}
                     <li><div className='text-rose-500'>User Name</div> </li>
                     <li> <button className="btn btn-ghost">Sign Out</button></li>
                 </ul>

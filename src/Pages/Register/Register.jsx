@@ -1,9 +1,84 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import GoogleSingIn from '../../Components/GoogleSingIn';
 
 const Register = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
     return (
-        <div>
-            register
+        <div className="h-screen w-full flex justify-center items-center">
+            <div className="w-full md:w-1/3 shadow-md rounded-xl p-10">
+                <h3 className=' text-3xl font-semibold'>Register</h3>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    {/* register your input into the hook by invoking the "register" function */}
+                    <div>
+                        <label className="label">
+                            <span className="label-text">Name</span>
+                        </label>
+                        <input type="text" placeholder="Enter your name" class="input input-bordered w-full" {...register("name", {
+                            required: {
+                                value: true,
+                                message: "Name is Required"
+                            }
+                        })} />
+                        <label class="label">
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        </label>
+                    </div>
+
+                    <div>
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input type="email" placeholder="Your email" class="input input-bordered w-full" {...register("email", {
+                            required: {
+                                value: true,
+                                message: "Email is Required"
+                            },
+                            pattern: {
+                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                message: 'Provide a valid Email'
+                            }
+                        })} />
+                        <label class="label">
+                            {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                        </label>
+                    </div>
+
+                    <div>
+                        <label className="label">
+                            <span className="label-text">Name</span>
+                        </label>
+                        <input type="password" placeholder="password" class="input input-bordered w-full" {...register("password", {
+                            required: {
+                                value: true,
+                                message: "Password is Required"
+                            },
+                            minLength: {
+                                value: 6,
+                                message: 'Must be 6 characters or longer'
+                            }
+                        })} />
+                        <label class="label">
+                            {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                            {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                        </label>
+                    </div>
+
+
+                    {/* include validation with required or other standard HTML validation rules */}
+
+                    {/* errors will return when field validation fails  */}
+                    {errors.exampleRequired && <span>This field is required</span>}
+
+                    <input className=' btn w-full' type="submit" value="register" />
+                </form>
+                <p className='mt-2'>Already have an account? <Link className='text-rose-500 font-bold text-base' to="/login">  login</Link></p>
+                <GoogleSingIn/>
+            </div>
+
         </div>
     );
 };
