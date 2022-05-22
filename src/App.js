@@ -13,10 +13,12 @@ import Login from "./Pages/Login/Login";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 import Register from "./Pages/Register/Register";
+import Navication from "./Sheard/Navication";
 
 function App() {
   return (
     <>
+    <Navication/>
      <Routes>
        <Route path='/' element={<Home/>}/>
        <Route path='home' element={<Home/>}/>
