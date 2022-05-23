@@ -1,12 +1,18 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleSingIn from '../../Components/GoogleSingIn';
 import Loading from '../../Components/Loading';
 import auth from '../../firebase.config';
+import useToken from '../../Hooks/useToken';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/"; 
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [
         signInWithEmailAndPassword,
@@ -20,13 +26,15 @@ const Login = () => {
 
     };
     
-    if (user) {
-        console.log(user);
-    }; 
+    const [token] = useToken(user);
 
     if (loading) {
         return <Loading />
     };
+    
+    if (token) {
+        // navigate('/');
+    }
     return (
         <div className="h-screen w-full flex justify-center items-center">
             <div className="w-full md:w-1/3 shadow-md rounded-xl p-10">
@@ -39,7 +47,7 @@ const Login = () => {
                         <input type="email" placeholder="Your email" class="input input-bordered w-full" {...register("email", {
                             required: {
                                 value: true,
-                                message: "Pleace, Entete yuour Email"
+                                message: "Pleace, Enter your Email"
                             },
                             pattern: {
                                 value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
@@ -67,7 +75,9 @@ const Login = () => {
                             <span class="label-text ml-auto text-rose-400 font-semibold"><Link to='/resetPassword'>Forget Password?</Link> </span>
                         </label>
                         <label class="label">
-
+                            {
+                                error&&<span className="label-text-alt text-red-500">{error.message}</span>
+                            }
                         </label>
                     </div>
 

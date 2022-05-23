@@ -1,34 +1,47 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleSingIn from '../../Components/GoogleSingIn';
 import auth from '../../firebase.config';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Loading from '../../Components/Loading';
+import useToken from '../../Hooks/useToken';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
-      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-    const onSubmit = async(data) => {
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({displayName:data.name})
-    }
-
-    if(user){
-        console.log(user)
+        await updateProfile({ displayName: data.name })
     };
-    if(loading || updating){
-        return <Loading/>
-    }
-    if(error || updateError ){
-        
-    }
+
+    const [token] = useToken(user)
+
+
+    if (loading || updating) {
+        return <Loading />
+    };
+    let registererror;
+    if (error || updateError) {
+        console.log(error.message);
+        registererror = <span className="label-text-alt text-red-500">{error.message || updateError.message}</span>
+    };
+
+    if (token) {
+        // navigate(from, { replace: true });
+        // navigate('/');
+    };
     return (
         <div className="h-screen w-full flex justify-center items-center">
             <div className="w-full md:w-1/3 shadow-md rounded-xl p-10">
@@ -46,7 +59,7 @@ const Register = () => {
                             }
                         })} />
                         <label class="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                            {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                         </label>
                     </div>
 
@@ -88,11 +101,12 @@ const Register = () => {
                             {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                         </label>
+                        {registererror}
                     </div>
                     <input className=' btn w-full' type="submit" value="register" />
                 </form>
                 <p className='mt-2'>Already have an account? <Link className='text-rose-500 font-bold text-base' to="/login">  login</Link></p>
-                <GoogleSingIn/>
+                <GoogleSingIn />
             </div>
 
         </div>
