@@ -54,13 +54,13 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input type="text" placeholder="Enter your name" class="input input-bordered w-full" {...register("name", {
+                        <input type="text" placeholder="Enter your name" className="input input-bordered w-full" {...register("name", {
                             required: {
                                 value: true,
                                 message: "Name is Required"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                         </label>
                     </div>
@@ -69,7 +69,7 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="Your email" class="input input-bordered w-full" {...register("email", {
+                        <input type="email" placeholder="Your email" className="input input-bordered w-full" {...register("email", {
                             required: {
                                 value: true,
                                 message: "Email is Required"
@@ -79,7 +79,7 @@ const Register = () => {
                                 message: 'Provide a valid Email'
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                             {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         </label>
@@ -89,7 +89,7 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" placeholder="password" class="input input-bordered w-full" {...register("password", {
+                        <input type="password" placeholder="password" className="input input-bordered w-full" {...register("password", {
                             required: {
                                 value: true,
                                 message: "Password is Required"
@@ -99,7 +99,7 @@ const Register = () => {
                                 message: 'Must be 6 characters or longer'
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                         </label>

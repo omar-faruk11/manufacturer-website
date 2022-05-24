@@ -33,7 +33,7 @@ const ResetPassword = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="Your email" class="input input-bordered w-full" {...register("email", {
+                        <input type="email" placeholder="Your email" className="input input-bordered w-full" {...register("email", {
                             required: {
                                 value: true,
                                 message: "Email is Required"
@@ -43,7 +43,7 @@ const ResetPassword = () => {
                                 message: 'Provide a valid Email'
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                             {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         </label>

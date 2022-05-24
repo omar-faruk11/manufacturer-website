@@ -49,25 +49,25 @@ const AddProduct = () => {
     return (
         <div className="w-full flex justify-center items-center ">
             <div className="w-full md:w-1/2 shadow-md rounded-xl p-10">
-                <h2 className=' text-3xl text-center uppercase text-pink-500'>Add a Product</h2>
+                <h2 className=' text-3xl text-center uppercase primary'>Add a Product</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='hidden'>
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="text" value={user?.email} class="input input-bordered w-full" {...register("email")} />
+                        <input type="text" value={user?.email} className="input input-bordered w-full" {...register("email")} />
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text">Product Name</span>
                         </label>
-                        <input type="text" placeholder='Product Name' class="input input-bordered w-full" {...register("name", {
+                        <input type="text" placeholder='Product Name' className="input input-bordered w-full" {...register("name", {
                             required: {
                                 value: true,
                                 message: "Name is Required"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                         </label>
                     </div>
@@ -75,13 +75,13 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Description</span>
                         </label>
-                        <textarea type="text" placeholder="description" class="textarea textarea-bordered w-full" {...register("description", {
+                        <textarea type="text" placeholder="description" className="textarea textarea-bordered w-full" {...register("description", {
                             required: {
                                 value: true,
                                 message: "description is Required"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
                         </label>
                     </div>
@@ -89,13 +89,13 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Price</span>
                         </label>
-                        <input type="number" placeholder="price" class="input input-bordered w-full" {...register("price", {
+                        <input type="number" placeholder="price" className="input input-bordered w-full" {...register("price", {
                             required: {
                                 value: true,
                                 message: "price is Required"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
                         </label>
                     </div>
@@ -103,13 +103,13 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Min_order</span>
                         </label>
-                        <input type="number" placeholder="min_order" class="input input-bordered w-full" {...register("min_order", {
+                        <input type="number" placeholder="min_order" className="input input-bordered w-full" {...register("min_order", {
                             required: {
                                 value: true,
                                 message: "min_order is Required"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.min_order?.type === 'required' && <span className="label-text-alt text-red-500">{errors.min_order.message}</span>}
                         </label>
                     </div>
@@ -117,13 +117,13 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Available</span>
                         </label>
-                        <input type="number" placeholder="available" class="input input-bordered w-full" {...register("available", {
+                        <input type="number" placeholder="available" className="input input-bordered w-full" {...register("available", {
                             required: {
                                 value: true,
                                 message: "description is Required"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.available?.type === 'required' && <span className="label-text-alt text-red-500">{errors.available.message}</span>}
                         </label>
                     </div>
@@ -131,13 +131,13 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Picture</span>
                         </label>
-                        <input type="file" class="input input-bordered w-full" {...register("picture", {
+                        <input type="file" className="input input-bordered w-full" {...register("picture", {
                             required: {
                                 value: true,
                                 message: "Picture is Required"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.picture?.type === 'required' && <span className="label-text-alt text-red-500">{errors.picture.message}</span>}
                         </label>
                     </div>

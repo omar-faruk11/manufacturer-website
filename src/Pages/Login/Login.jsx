@@ -44,7 +44,7 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="Your email" class="input input-bordered w-full" {...register("email", {
+                        <input type="email" placeholder="Your email" className="input input-bordered w-full" {...register("email", {
                             required: {
                                 value: true,
                                 message: "Pleace, Enter your Email"
@@ -54,7 +54,7 @@ const Login = () => {
                                 message: 'Invalid Email'
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                             {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         </label>
@@ -64,17 +64,17 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" placeholder="password" class="input input-bordered w-full" {...register("password", {
+                        <input type="password" placeholder="password" className="input input-bordered w-full" {...register("password", {
                             required: {
                                 value: true,
                                 message: "Please, Enter your Password"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                            <span class="label-text ml-auto text-rose-400 font-semibold"><Link to='/resetPassword'>Forget Password?</Link> </span>
+                            <span className="label-text ml-auto text-rose-400 font-semibold"><Link to='/resetPassword'>Forget Password?</Link> </span>
                         </label>
-                        <label class="label">
+                        <label className="label">
                             {
                                 error&&<span className="label-text-alt text-red-500">{error.message}</span>
                             }

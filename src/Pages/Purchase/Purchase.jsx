@@ -29,39 +29,39 @@ const Purchase = () => {
     return (
         <div className=" h-screen w-full flex justify-center items-center">
             <div className="w-full md:w-1/3 shadow-md rounded-xl p-10">
-                <h2 className=' text-3xl font-bold text-center text-pink-500 uppercase'>purchase order</h2>
+                <h2 className=' text-3xl font-bold text-center primary uppercase'>purchase order</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div>
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input type="text" value={user.displayName} disabled class="input input-bordered w-full" {...register("name")} />
+                        <input type="text" value={user.displayName} disabled className="input input-bordered w-full" {...register("name")} />
 
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="text" value={user.email} disabled class="input input-bordered w-full" {...register("email")} />
+                        <input type="text" value={user.email} disabled className="input input-bordered w-full" {...register("email")} />
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text">Product</span>
                         </label>
-                        <input type="text" value={name} disabled class="input input-bordered w-full" {...register("parts")} />
+                        <input type="text" value={name} disabled className="input input-bordered w-full" {...register("parts")} />
                         
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text">Quantity</span>
                         </label>
-                        <input type="number" min={min_order} max={available} value={min_order} placeholder="Quantity" class="input input-bordered w-full" {...register("quantity", {
+                        <input type="number" min={min_order} max={available} value={min_order} placeholder="Quantity" className="input input-bordered w-full" {...register("quantity", {
                             required: {
                                 value: true,
                                 message: "Email is Required"
                             }
                         })} />
-                        <label class="label">
+                        <label className="label">
                             {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
                         </label>
                     </div>

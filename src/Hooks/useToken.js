@@ -9,6 +9,7 @@ const useToken = (user) => {
         const email = user?.user?.email;
         const name = user?.user?.displayName;
         const currentUser = { email, name };
+       if(email){
         (async () => {
             const { data } = await axios.put(`http://localhost:5000/users/${email}`,(currentUser));
             if (data) {
@@ -17,6 +18,7 @@ const useToken = (user) => {
                 setToken(accessToken);
             }
         })();
+       }
     }, [user])
 
     return[token]
