@@ -10,7 +10,7 @@ const useToken = (user) => {
         const name = user?.user?.displayName;
         const currentUser = { email, name };
         (async () => {
-            const { data } = await axios.put(`http://localhost:5000/users/${email}`, (currentUser));
+            const { data } = await axios.put(`http://localhost:5000/users/${email}`,(currentUser));
             if (data) {
                 const accessToken = data.token;
                 localStorage.setItem('accessToken', accessToken);

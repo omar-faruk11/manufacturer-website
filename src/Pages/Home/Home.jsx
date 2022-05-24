@@ -7,13 +7,13 @@ import Reviews from './Reviews';
 
 const Home = () => {
     return (
-        <div>
+        <>
             <Banner/>
             <Parts/>
             <Reviews/>
             <BusinessSummary/>
             <Footer/>
-        </div>
+        </>
     );
 };
 

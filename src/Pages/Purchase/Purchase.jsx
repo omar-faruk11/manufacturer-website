@@ -10,7 +10,6 @@ import Loading from '../../Components/Loading';
 
 const Purchase = () => {
     const { id } = useParams();
-    const queryClient = useQueryClient()
 
     const [user, loading] = useAuthState(auth);
     console.log(id);

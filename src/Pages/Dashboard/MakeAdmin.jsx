@@ -3,7 +3,7 @@ import React from 'react';
 const MakeAdmin = () => {
     return (
         <div>
-            Make Admin
+            MakeAdmin
         </div>
     );
 };
