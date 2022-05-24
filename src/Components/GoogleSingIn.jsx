@@ -12,9 +12,7 @@ const GoogleSingIn = () => {
     const from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [token] = useToken(user);
-    if(loading){
-        return <Loading/>
-    };
+    
     if(token){
         // navigate(from, { replace: true });
         // navigate('/');

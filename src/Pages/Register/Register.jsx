@@ -21,18 +21,14 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-    const onSubmit = async (data) => {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName: data.name })
-    };
-
-    const [token] = useToken(user)
-
+    const [token] = useToken(user);
+    let registererror;
 
     if (loading || updating) {
         return <Loading />
     };
-    let registererror;
+
+
     if (error || updateError) {
         console.log(error.message);
         registererror = <span className="label-text-alt text-red-500">{error.message || updateError.message}</span>
@@ -42,6 +38,12 @@ const Register = () => {
         // navigate(from, { replace: true });
         // navigate('/');
     };
+
+    const onSubmit = async (data) => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name })
+    };
+
     return (
         <div className="h-screen w-full flex justify-center items-center">
             <div className="w-full md:w-1/3 shadow-md rounded-xl p-10">
@@ -85,7 +87,7 @@ const Register = () => {
 
                     <div>
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Password</span>
                         </label>
                         <input type="password" placeholder="password" class="input input-bordered w-full" {...register("password", {
                             required: {

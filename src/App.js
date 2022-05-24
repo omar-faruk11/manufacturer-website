@@ -18,20 +18,35 @@ import Navication from "./Sheard/Navication";
 import ResetPassword from "./Pages/Login/ResetPassword"
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Purchase from "./Pages/Purchase/Purchase";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
+
+const queryClient = new QueryClient()
+
 
 function App() {
   return (
     <>
-    <Navication/>
+    <QueryClientProvider client={queryClient}>
+          <Navication/>
      <Routes>
        <Route path='/' element={<Home/>}/>
        <Route path='home' element={<Home/>}/>
+       <Route path='purchase/:id' element={
+         <RequireAuth>
+           <Purchase/>
+         </RequireAuth>
+       }/>
        <Route path='dashboard' element={<RequireAuth>
         <Dashboard/>
        </RequireAuth>}>
          <Route path='myorder' element={<MyOrders/>}/>
          <Route path='addreview' element={<AddReview/>}/>
-         <Route path='myprofile' element={<MyProfile/>}/>
+         <Route index element={<MyProfile/>}/>
+         <Route path="myprofile" element={<MyProfile/>}/>
          <Route path='manageorders' element={<ManageAllOrders/>}/>
          <Route path='addproduct' element={<AddProduct/>}/>
          <Route path='makeadmin' element={<MakeAdmin/>}/>
@@ -45,6 +60,8 @@ function App() {
        <Route path='*' element={<NotFoundPage/>}/>
      </Routes>
      <ToastContainer/>
+    </QueryClientProvider>
+
     </>
   );
 }

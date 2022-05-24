@@ -18,7 +18,7 @@ const Footer = () => {
                 </div>
             </div>
             <div>
-                <p>Copyright © 2022 - All right reserved by Parts Master Ltd</p>
+                <p>Copyright © 2022 - All right reserved by Parts Master</p>
             </div>
         </footer>
     );

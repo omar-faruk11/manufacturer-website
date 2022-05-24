@@ -6,7 +6,7 @@ const Parts = () => {
     const [parts , setParts] = useState([]);
     useEffect(()=>{
         (async()=>{
-            const {data} = await axios.get('parts.json');
+            const {data} = await axios.get('http://localhost:5000/parts');
             setParts(data);
             console.log(data);
         })()

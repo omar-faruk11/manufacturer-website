@@ -1,7 +1,9 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const Part = ({ part }) => {
-    const { name, picture, description, min_order, available, price } = part;
+    const navigate = useNavigate();
+    const {_id, name, picture, description, min_order, available, price } = part;
     return (
         <div>
             <div class="card card-compact h-full bg-base-100 shadow-xl">
@@ -13,7 +15,7 @@ const Part = ({ part }) => {
                     <p className=' text-base capitalize '>available: {available}</p>
                     <p className=' text-base capitalize '> price: {price} (per item)</p>
                     <div class="card-actions justify-end">
-                        <button class="btn w-full">book now</button>
+                        <button onClick={()=> navigate(`/purchase/${_id}`)} class="btn w-full">book now</button>
                     </div>
                 </div>
             </div>
