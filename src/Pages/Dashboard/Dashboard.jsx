@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
+    useEffect(()=>{
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+    },[]);
     return (
         <div>
             <div className="drawer drawer-mobile ">
                 <input id="dashboard-manu" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">
-                    <h2 className=' text-3xl text-primary font-semibold uppercase'>Dashboard</h2>
-                    <p>Welcome to your Dashboard.</p>
+                    <h2 className=' text-3xl text-primary font-semibold uppercase pl-2'>Dashboard</h2>
+                    <p className='pl-2'>Welcome to your Dashboard.</p>
                     <Outlet/>
                 </div>
                 <div className="drawer-side">
