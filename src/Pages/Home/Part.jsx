@@ -15,7 +15,7 @@ const Part = ({ part }) => {
                     <p className=' text-base capitalize '>available: {available}</p>
                     <p className=' text-base capitalize '> price: {price} (per item)</p>
                     <div className="card-actions justify-end">
-                        <button onClick={()=> navigate(`/purchase/${_id}`)} className="btn w-full">book now</button>
+                        <button onClick={()=> navigate(`/purchase/${_id}`)} disabled={available < min_order} className="btn w-full">{available < min_order? 'Stock Out':'book now'} </button>
                     </div>
                 </div>
             </div>

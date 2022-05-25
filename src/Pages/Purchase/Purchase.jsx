@@ -6,13 +6,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from "react-query";
 import axios from 'axios';
 import Loading from '../../Components/Loading';
+import { toast } from 'react-toastify';
 
 
 const Purchase = () => {
     const { id } = useParams();
     const [user, loading] = useAuthState(auth);
     const [totalPrice, setTotalPrice] = useState(' ')
-    const { register, handleSubmit, watch, control, getValues, setValue, formState: { errors } } = useForm({ mode: 'onChange' });
+    const { register, handleSubmit, watch, control, getValues, setValue,reset, formState: { errors } } = useForm({ mode: 'onChange' });
 
     const { isLoading, error, data, isFetching } = useQuery(["repoData", id], async () => {
         return await axios.get(`http://localhost:5000/parts/${id}`)
@@ -24,14 +25,18 @@ const Purchase = () => {
         };
     }, [data, setValue]);
     const productQuantity = getValues("quantity");
+    const productPrice = data?.data?.price;
+    const defaultQuantity = data?.data?.min_order;
     useEffect(()=>{
+        
         if (productQuantity) {
-            console.log('price', price);
-            setTotalPrice(productQuantity * price)
-        };
-    },[productQuantity,data?.data?.price]);
+            setTotalPrice(parseInt(productQuantity * productPrice))
+        }else{
+            setTotalPrice(parseInt(defaultQuantity * productPrice))
+        }
+    },[productQuantity,productPrice,defaultQuantity]);
 
-    if (isLoading) {
+    if (isLoading ||loading) {
         return <Loading />
     };
 
@@ -53,7 +58,22 @@ const Purchase = () => {
             totalPrice
 
         };
-        console.log(order);
+        (async () => {
+            const { data } = await axios.post('http://localhost:5000/orders', (order))
+                if (data) {
+                    toast.success('Order Send', {
+                        position: "top-right",
+                        autoClose: 500,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                    reset();
+                    
+                };
+        })();
 
     };
 
@@ -100,7 +120,7 @@ const Purchase = () => {
                             <label className="label">
                                 <span className="label-text">Total Price</span>
                             </label>
-                            <input type="text" value={errors?.quantity? 0 :totalPrice} readOnly className="input input-bordered w-full" {...register("totalPrice")} />
+                            <input type="text" value={errors?.quantity? 0 : totalPrice } readOnly className="input input-bordered w-full" {...register("totalPrice")} />
                         </div>
                         <div>
                             <label className="label">
@@ -130,13 +150,13 @@ const Purchase = () => {
                             <label className="label">
                                 <span className="label-text">Street address</span>
                             </label>
-                            <input type="text"  readOnly className="input input-bordered w-full" {...register("address")} />
+                            <input type="text"  className="input input-bordered w-full" {...register("address")} />
                         </div>
                         <div>
                             <label className="label">
                                 <span className="label-text">Phone</span>
                             </label>
-                            <input type="text"  readOnly className="input input-bordered w-full mb-5" {...register("phone")} />
+                            <input type="text"   className="input input-bordered w-full mb-5" {...register("phone")} />
                         </div>
                         <input className=' btn w-full btn-primary text-white font-xl' disabled={errors.quantity} type="submit" value="purchase order" />
                     </form>
