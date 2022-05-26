@@ -13,7 +13,7 @@ const ManageProducts = () => {
     };
     return (
         <div>
-            <h2 className="text-2xl text-primary uppercase text-center mt-10 ">Manage Products</h2>
+            <h2 className="text-2xl text-primary uppercase text-center mt-10 pb-8">Manage Products</h2>
             <p className='text-center mb-4'>Products: {data?.data?.length}</p>
             <div className="flex justify-center">
                 <div className="w-full md:w-11/12">

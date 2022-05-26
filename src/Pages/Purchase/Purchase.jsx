@@ -55,7 +55,7 @@ const Purchase = () => {
             name,
             picture,
             quantity: data.quantity,
-            totalPrice
+            totalPrice : data.quantity * price
 
         };
         (async () => {
@@ -126,11 +126,15 @@ const Purchase = () => {
                             <label className="label">
                                 <span className="label-text">Quantity</span>
                             </label>
-                            <input type="number" placeholder="Quantity" className="input input-bordered w-full" {...register("quantity", {
+                            <input type="text"  placeholder="Quantity" className="input input-bordered w-full" {...register("quantity", {
                                 required: {
                                     value: true,
                                     message: "Quantity is required"
                                 },
+                                pattern: {
+                                    value: /[0-9]/,
+                                    message:'must be number'
+                                } ,
                                 min: {
                                     value: min_order,
                                     message: `you can't order less than ${min_order}`
@@ -150,13 +154,27 @@ const Purchase = () => {
                             <label className="label">
                                 <span className="label-text">Street address</span>
                             </label>
-                            <input type="text"  className="input input-bordered w-full" {...register("address")} />
+                            <input type="text"  className="input input-bordered w-full" {...register("address", {
+                                required: {
+                                    value: true,
+                                    message: "Address is required"
+                                }})} />
+                                <label className="label">
+                                {errors.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors.address.message}</span>}
+                            </label>
                         </div>
                         <div>
                             <label className="label">
                                 <span className="label-text">Phone</span>
                             </label>
-                            <input type="text"   className="input input-bordered w-full mb-5" {...register("phone")} />
+                            <input type="text"   className="input input-bordered w-full mb-5" {...register("phone", {
+                                required: {
+                                    value: true,
+                                    message: "Phone Number is required"
+                                }})} />
+                                <label className="label">
+                                {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
+                            </label>
                         </div>
                         <input className=' btn w-full btn-primary text-white font-xl' disabled={errors.quantity} type="submit" value="purchase order" />
                     </form>

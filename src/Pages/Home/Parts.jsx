@@ -17,7 +17,7 @@ const Parts = () => {
             <h2 className=' text-center text-3xl font-semibold mb-8 text-rose-500 uppercase'>Parts</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-5">
             {
-                parts.map((part, index) =><Part key={part._id} part={part}/>)
+                parts.slice(0,6).map(part =><Part key={part._id} part={part}/>)
             }
             </div>
         </section>

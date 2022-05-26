@@ -58,7 +58,7 @@ const AddReview = () => {
 
     };
     return (
-        <div className=" w-full flex justify-center items-center">
+        <div className=" w-full flex justify-center items-center pb-8">
             <div className="w-full md:w-1/2 shadow-md rounded-xl p-10">
                 <h2 className=' text-3xl text-center uppercase primary'>Add a Review</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import OrderDeleteModal from './OrderDeleteModal'
 
 const OrderRow = ({ order ,refetch}) => {
-    const { _id,name, picture, quantity, totalPrice } = order;
+    const navigate = useNavigate();
+    const { _id,name, picture, quantity, totalPrice,paid,transactionId} = order;
     return (
         <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
@@ -22,10 +24,19 @@ const OrderRow = ({ order ,refetch}) => {
                 {totalPrice}
             </td>
             <td class="px-6 py-4">
-                <button className='btn btn-primary btn-sm'>pay</button>
+                {
+                    paid?<>
+                    <p>Paid</p>
+                    <small>{transactionId}</small>
+                    </>: <>
+                    <button onClick={()=>navigate(`/dashboard/payment/${_id}`)} className='btn btn-primary btn-sm'>pay</button>
+                    </>
+                }
             </td>
             <td class="px-6 py-4 text-right">
-                <label for="deleteorder" className='btn btn-error btn-sm rounded-md text-base-100'>Delete</label>
+                {
+                    !paid && <label for="deleteorder" className='btn btn-error btn-sm rounded-md text-base-100'>Delete</label>
+                }
             </td>
             <OrderDeleteModal id={_id} refetch={refetch}/>
         </tr>

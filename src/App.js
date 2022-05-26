@@ -19,10 +19,12 @@ import ResetPassword from "./Pages/Login/ResetPassword"
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Purchase from "./Pages/Purchase/Purchase";
+import Footer from './Sheard/Footer.jsx';
 import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
+import Payment from "./Pages/Dashboard/Payment";
 
 const queryClient = new QueryClient()
 
@@ -47,6 +49,7 @@ function App() {
          <Route path='addreview' element={<AddReview/>}/>
          <Route index element={<MyProfile/>}/>
          <Route path="myprofile" element={<MyProfile/>}/>
+         <Route path='payment/:id' element={<Payment/>}/>
          <Route path='manageorders' element={<ManageAllOrders/>}/>
          <Route path='addproduct' element={<AddProduct/>}/>
          <Route path='makeadmin' element={<MakeAdmin/>}/>
@@ -59,6 +62,7 @@ function App() {
        <Route path='register' element={<Register/>}/>
        <Route path='*' element={<NotFoundPage/>}/>
      </Routes>
+     <Footer/>
      <ToastContainer/>
     </QueryClientProvider>
 

@@ -25,7 +25,7 @@ const MyOrders = () => {
     };
     return (
         <div>
-            <h2 className="text-2xl text-primary uppercase text-center mt-10 ">my orders</h2>
+            <h2 className="text-2xl text-primary uppercase text-center mt-10 pb-8">my orders</h2>
             <p className='text-center mb-4'>orders: {data?.data?.length}</p>
             <div className="flex justify-center">
                 <div className="w-full md:w-11/12">
@@ -51,7 +51,7 @@ const MyOrders = () => {
                                     Payment
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        <span class="sr-only">Remove</span>
+                                       
                                     </th>
                                 </tr>
                             </thead>

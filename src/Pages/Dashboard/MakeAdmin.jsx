@@ -13,7 +13,7 @@ const MakeAdmin = () => {
     };
     return (
         <div>
-            <h2 className=' text-3xl font-semibold primary uppercase text-center my-10'>Make Admin</h2>
+            <h2 className=' text-3xl font-semibold primary uppercase text-center my-10 pb-8'>Make Admin</h2>
             <div className='flex justify-center'>
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full md:w-11/12">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

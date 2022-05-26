@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 const Part = ({ part }) => {
     const navigate = useNavigate();
     const {_id, name, picture, description, min_order, available, price } = part;
+    console.log(available, min_order);
     return (
         <div>
             <div className="card card-compact h-full bg-base-100 shadow-xl">
@@ -15,7 +16,7 @@ const Part = ({ part }) => {
                     <p className=' text-base capitalize '>available: {available}</p>
                     <p className=' text-base capitalize '> price: {price} (per item)</p>
                     <div className="card-actions justify-end">
-                        <button onClick={()=> navigate(`/purchase/${_id}`)} disabled={available < min_order} className="btn w-full">{available < min_order? 'Stock Out':'book now'} </button>
+                        <button onClick={()=> navigate(`/purchase/${_id}`)} disabled={parseInt(available < min_order)} className="btn w-full">{parseInt(available < min_order)? 'Stock Out':'book now'} </button>
                     </div>
                 </div>
             </div>
