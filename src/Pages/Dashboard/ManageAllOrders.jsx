@@ -36,8 +36,9 @@ const ManageAllOrders = () => {
                             <th>Name</th>
                             <th>quantity</th>
                             <th>price</th>
-                            <th>price</th>
-                            <th>price</th>
+                            <th>prayment</th>
+                            <th>status</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

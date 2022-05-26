@@ -5,37 +5,40 @@ import axiosPrivate from '../../Api/axiosPrivate';
 const ManageAllOrderRow = ({userOrder,refetch}) => {
     const {_id, name, picture, quantity, totalPrice,paid,shipped} = userOrder;
     const handleDeleteOrder = () =>{
-        (async () => {
-            try {
-                const { data } = await axiosPrivate.delete(`https://obscure-tor-98631.herokuapp.com/orders/${_id}`);
-                console.log(data);
-                if (data.acknowledged === true) {
-                    refetch();
-                    toast.success('order Cencel', {
-                        position: "top-right",
-                        autoClose: 500,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        });
-                        // setSingleOrder(null);
+        const confirm = window.confirm('Are you sure?')
+        if(confirm){
+            (async () => {
+                try {
+                    const { data } = await axiosPrivate.delete(`https://obscure-tor-98631.herokuapp.com/orders/${_id}`);
+                    console.log(data);
+                    if (data.acknowledged === true) {
+                        refetch();
+                        toast.success('order Cencel', {
+                            position: "top-right",
+                            autoClose: 500,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            });
+                            // setSingleOrder(null);
+                    }
+                } catch (error) {
+                    if (error.status === 403 ) {
+                        toast.error('Failed to Cencel', {
+                            position: "top-right",
+                            autoClose: 500,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            });
+                    }
                 }
-            } catch (error) {
-                if (error.status === 403 ) {
-                    toast.error('Failed to Cencel', {
-                        position: "top-right",
-                        autoClose: 500,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        });
-                }
-            }
-        })();
+            })();
+        }
     };
     const handleShipedOrder = () =>{
         (async () => {
