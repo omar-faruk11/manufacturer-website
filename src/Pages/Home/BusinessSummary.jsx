@@ -5,7 +5,7 @@ import React from 'react';
 const BusinessSummary = () => {
     return (
         <div className='container mx-auto my-16'>
-            <h2 className='text-center text-3xl uppercase text-rose-500 my-8'>Business Summary</h2>
+            <h2 className='text-center text-3xl uppercase text-primary my-8'>Business Summary</h2>
             <div className="stats stats-vertical w-full lg:stats-horizontal shadow">
 
                 <div className="stat text-center ">

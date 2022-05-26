@@ -35,7 +35,7 @@ const Register = () => {
     };
 
     if (token) {
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
         // navigate('/');
     };
 

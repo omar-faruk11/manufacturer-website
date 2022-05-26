@@ -23,13 +23,13 @@ const MakeAdmin = () => {
                                     
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Color
+                                    Name
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Category
+                                    email
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Price
+                                    option
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     <span className="sr-only">Edit</span>

@@ -12,7 +12,7 @@ const MyOrders = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate()
     const { isLoading, error, data, isFetching, refetch } = useQuery(["MyOrders", user], async () => {
-        return await axiosPrivate.get(`http://localhost:5000/orders/${user.email}`)
+        return await axiosPrivate.get(`http://localhost:5000/orders?email=${user.email}`)
     });
 
     if (isLoading) {

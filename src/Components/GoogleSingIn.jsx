@@ -13,7 +13,7 @@ const GoogleSingIn = () => {
     const [token] = useToken(user);
     
     if(token){
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
         // navigate('/');
     }
     return (
