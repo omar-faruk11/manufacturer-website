@@ -25,6 +25,9 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import Payment from "./Pages/Dashboard/Payment";
+import UpdateProfile from "./Pages/Dashboard/UpdateProfile";
+import ProfileText from "./Pages/Dashboard/ProfileText";
+import Welcome from "./Pages/Dashboard/Welcome";
 
 const queryClient = new QueryClient()
 
@@ -47,8 +50,11 @@ function App() {
        </RequireAuth>}>
          <Route path='myorder' element={<MyOrders/>}/>
          <Route path='addreview' element={<AddReview/>}/>
-         <Route index element={<MyProfile/>}/>
-         <Route path="myprofile" element={<MyProfile/>}/>
+         <Route index element={<Welcome/>}/>
+         <Route path="myprofile" element={<MyProfile/>}>
+           <Route index element={<ProfileText/>}/>
+           <Route path="updateprofile" element={<UpdateProfile/>}/>
+         </Route>
          <Route path='payment/:id' element={<Payment/>}/>
          <Route path='manageorders' element={<ManageAllOrders/>}/>
          <Route path='addproduct' element={<AddProduct/>}/>

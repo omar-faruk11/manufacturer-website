@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import axiosPrivate from '../../Api/axiosPrivate';
 import auth from '../../firebase.config';
 
@@ -33,9 +34,18 @@ const AddProduct = () => {
                     };
                     console.log(product);
                         (async () => {
-                            const { data } = await axiosPrivate.post('http://localhost:5000/parts',(product))
+                            const { data } = await axiosPrivate.post('https://obscure-tor-98631.herokuapp.com/parts',(product))
                             if (data) {
-                                reset()
+                                reset();
+                                toast.success('Product added', {
+                                    position: "top-right",
+                                    autoClose: 500,
+                                    hideProgressBar: true,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                    });
                             }
                         })();
 

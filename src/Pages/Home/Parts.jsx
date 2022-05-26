@@ -6,7 +6,7 @@ const Parts = () => {
     const [parts , setParts] = useState([]);
     useEffect(()=>{
         (async()=>{
-            const {data} = await axios.get('http://localhost:5000/parts');
+            const {data} = await axios.get('https://obscure-tor-98631.herokuapp.com/parts');
             setParts(data);
             console.log(data);
         })()

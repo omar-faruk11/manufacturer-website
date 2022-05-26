@@ -14,7 +14,7 @@ const CheckoutForm = ({order}) => {
     
     useEffect(()=>{
         (async ()=>{
-            const {data} = await axiosPrivate.post('http://localhost:5000/create-payment-intent',{totalPrice});
+            const {data} = await axiosPrivate.post('https://obscure-tor-98631.herokuapp.com/create-payment-intent',{totalPrice});
             if(data.clientSecret){
                 setClientSecret(data.clientSecret)
             }
@@ -66,7 +66,7 @@ const CheckoutForm = ({order}) => {
                 transactionId: paymentIntent.id
             };
             (async ()=>{
-                const {data} = await axiosPrivate.patch(`http://localhost:5000/orders/${_id}`,(payment));
+                const {data} = await axiosPrivate.patch(`https://obscure-tor-98631.herokuapp.com/orders/${_id}`,(payment));
                 if(data){
                     console.log(data);
                 }

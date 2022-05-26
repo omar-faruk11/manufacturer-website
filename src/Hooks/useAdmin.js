@@ -7,7 +7,7 @@ const useAdmin = (user) => {
     useEffect(() => {
         const email = user?.email;
         (async()=>{
-            const {data} = await axios.get(`http://localhost:5000/admin/${email}`)
+            const {data} = await axios.get(`https://obscure-tor-98631.herokuapp.com/admin/${email}`)
             setAdmin(data);
         })()
       

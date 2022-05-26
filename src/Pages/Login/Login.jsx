@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -27,15 +27,18 @@ const Login = () => {
     };
     
     const [token] = useToken(user);
+    useEffect(()=>{
+        if (token) {
+            navigate(from, { replace: true });
+           
+        };
+    },[token,from,navigate]);
 
     if (loading) {
         return <Loading />
     };
     
-    if (token) {
-        navigate(from, { replace: true });
-        // navigate('/');
-    }
+    
     return (
         <div className="h-screen w-full flex justify-center items-center">
             <div className="w-full md:w-1/3 shadow-md rounded-xl p-10">

@@ -6,7 +6,7 @@ const Reviews = () => {
     const [reviews , setReviews] = useState([]);
     useEffect(()=>{
         (async()=>{
-            const {data} = await axios.get("http://localhost:5000/reviews");
+            const {data} = await axios.get("https://obscure-tor-98631.herokuapp.com/reviews");
             setReviews(data);
         })()
     },[])

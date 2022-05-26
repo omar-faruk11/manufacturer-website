@@ -2,20 +2,20 @@ import React from 'react';
 
 const ContactUs = () => {
     return (
-        <section class="bg-white py-10 overflow-hidden relative z-10 ">
-            <div class="p-8 md:mx-28">
-                <div class=" mb-8 text-center text-4xl uppercase text-primary font-semibold">
+        <section className="bg-white py-10 overflow-hidden relative z-10 ">
+            <div className="p-8 md:mx-28">
+                <div className=" mb-8 text-center text-4xl uppercase text-primary font-semibold">
                     Contact Us
                 </div>
-                <div class="flex flex-wrap lg:justify-between -mx-4">
-                <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
-                        <div class="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
+                <div className="flex flex-wrap lg:justify-between -mx-4">
+                <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
+                        <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
                             <form>
-                                <div class="mb-6">
+                                <div className="mb-6">
                                     <input
                                         type="text"
                                         placeholder="Your Name"
-                                        class="
+                                        className="
                         w-full
                         rounded
                         py-3
@@ -28,11 +28,11 @@ const ContactUs = () => {
                         "
                                     />
                                 </div>
-                                <div class="mb-6">
+                                <div className="mb-6">
                                     <input
                                         type="email"
                                         placeholder="Your Email"
-                                        class="
+                                        className="
                         w-full
                         rounded
                         py-3
@@ -46,16 +46,16 @@ const ContactUs = () => {
                                     />
                                 </div>
                                 
-                                <div class="mb-6">
+                                <div className="mb-6">
                                     <textarea
                                         rows="6"
                                         placeholder="Your Message"
-                                        class=" w-full rounded py-3 px-[14px] h-28 text-body-color text-base border border-[f0f0f0]  outline-none focus-visible:shadow-none focus:border-primary"></textarea>
+                                        className=" w-full rounded py-3 px-[14px] h-28 text-body-color text-base border border-[f0f0f0]  outline-none focus-visible:shadow-none focus:border-primary"></textarea>
                                 </div>
                                 <div>
                                     <button
                                         type="submit"
-                                        class=" w-full text-white  bg-primary  rounded  border border-primary   p-3   transition   hover:bg-opacity-90 ">
+                                        className=" w-full text-white  bg-primary  rounded  border border-primary   p-3   transition   hover:bg-opacity-90 ">
                                         Send Message
                                     </button>
                                 </div>
@@ -63,36 +63,36 @@ const ContactUs = () => {
 
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/2 xl:w-6/12 px-4">
-                        <div class="max-w-[570px] mb-12 lg:mb-0">
-                            <h2 class=" text-dark mb-6 uppercase font-bold text-[32px] sm:text-[20px] lg:text-[22px] xl:text-[30px] " >
+                    <div className="w-full lg:w-1/2 xl:w-6/12 px-4">
+                        <div className="max-w-[570px] mb-12 lg:mb-0">
+                            <h2 className=" text-dark mb-6 uppercase font-bold text-[32px] sm:text-[20px] lg:text-[22px] xl:text-[30px] " >
                                 GET IN TOUCH WITH US
                             </h2>
                             
-                            <div class="flex mb-8 max-w-[370px] w-full">
+                            <div className="flex mb-8 max-w-[370px] w-full">
                                 <div
-                                    class=" max-w-[60px] sm:max-w-[70px] w-full h-[60px] sm:h-[70px] flex items-center justify-center mr-6 overflow-hidden bg-primary bg-opacity-5 text-primary  ">
+                                    className=" max-w-[60px] sm:max-w-[70px] w-full h-[60px] sm:h-[70px] flex items-center justify-center mr-6 overflow-hidden bg-primary bg-opacity-5 text-primary  ">
                                     <svg
                                         width="24"
                                         height="24"
                                         viewBox="0 0 24 24"
-                                        class="fill-current"
+                                        className="fill-current"
                                     >
                                         <path
                                             d="M21.8182 24H16.5584C15.3896 24 14.4156 23.0256 14.4156 21.8563V17.5688C14.4156 17.1401 14.0649 16.7893 13.6364 16.7893H10.4026C9.97403 16.7893 9.62338 17.1401 9.62338 17.5688V21.8173C9.62338 22.9866 8.64935 23.961 7.48052 23.961H2.14286C0.974026 23.961 0 22.9866 0 21.8173V8.21437C0 7.62972 0.311688 7.08404 0.818182 6.77223L11.1039 0.263094C11.6494 -0.0876979 12.3896 -0.0876979 12.9351 0.263094L23.2208 6.77223C23.7273 7.08404 24 7.62972 24 8.21437V21.7783C24 23.0256 23.026 24 21.8182 24ZM10.3636 15.4251H13.5974C14.7662 15.4251 15.7403 16.3995 15.7403 17.5688V21.8173C15.7403 22.246 16.0909 22.5968 16.5195 22.5968H21.8182C22.2468 22.5968 22.5974 22.246 22.5974 21.8173V8.25335C22.5974 8.13642 22.5195 8.01949 22.4416 7.94153L12.1948 1.4324C12.0779 1.35445 11.9221 1.35445 11.8442 1.4324L1.55844 7.94153C1.44156 8.01949 1.4026 8.13642 1.4026 8.25335V21.8563C1.4026 22.285 1.75325 22.6358 2.18182 22.6358H7.48052C7.90909 22.6358 8.25974 22.285 8.25974 21.8563V17.5688C8.22078 16.3995 9.19481 15.4251 10.3636 15.4251Z"
                                         />
                                     </svg>
                                 </div>
-                                <div class="w-full">
-                                    <h4 class="font-bold text-dark text-xl mb-1">Our Location</h4>
-                                    <p class="text-base text-body-color">
+                                <div className="w-full">
+                                    <h4 className="font-bold text-dark text-xl mb-1">Our Location</h4>
+                                    <p className="text-base text-body-color">
                                         99 S.t Jomblo Park Pekanbaru 28292. Indonesia
                                     </p>
                                 </div>
                             </div>
-                            <div class="flex mb-8 max-w-[370px] w-full">
+                            <div className="flex mb-8 max-w-[370px] w-full">
                                 <div
-                                    class="
+                                    className="
                      max-w-[60px]
                      sm:max-w-[70px]
                      w-full
@@ -112,7 +112,7 @@ const ContactUs = () => {
                                         width="24"
                                         height="26"
                                         viewBox="0 0 24 26"
-                                        class="fill-current"
+                                        className="fill-current"
                                     >
                                         <path
                                             d="M22.6149 15.1386C22.5307 14.1704 21.7308 13.4968 20.7626 13.4968H2.82869C1.86042 13.4968 1.10265 14.2125 0.97636 15.1386L0.092295 23.9793C0.0501967 24.4845 0.21859 25.0317 0.555377 25.4106C0.892163 25.7895 1.39734 26 1.94462 26H21.6887C22.1939 26 22.6991 25.7895 23.078 25.4106C23.4148 25.0317 23.5832 24.5266 23.5411 23.9793L22.6149 15.1386ZM21.9413 24.4424C21.8992 24.4845 21.815 24.5687 21.6466 24.5687H1.94462C1.81833 24.5687 1.69203 24.4845 1.64993 24.4424C1.60783 24.4003 1.52364 24.3161 1.56574 24.1477L2.4498 15.2649C2.4498 15.0544 2.61819 14.9281 2.82869 14.9281H20.8047C21.0152 14.9281 21.1415 15.0544 21.1835 15.2649L22.0676 24.1477C22.0255 24.274 21.9834 24.4003 21.9413 24.4424Z"
@@ -125,18 +125,18 @@ const ContactUs = () => {
                                         />
                                     </svg>
                                 </div>
-                                <div class="w-full">
-                                    <h4 class="font-bold text-dark text-xl mb-1">Phone Number</h4>
-                                    <p class="text-base text-body-color">(+62)81 414 257 9980</p>
+                                <div className="w-full">
+                                    <h4 className="font-bold text-dark text-xl mb-1">Phone Number</h4>
+                                    <p className="text-base text-body-color">(+62)81 414 257 9980</p>
                                 </div>
                             </div>
-                            <div class="flex mb-8 max-w-[370px] w-full">
+                            <div className="flex mb-8 max-w-[370px] w-full">
 
-                                <div class="w-full">
-                                    <h4 class="font-bold text-dark text-xl mb-1">
+                                <div className="w-full">
+                                    <h4 className="font-bold text-dark text-xl mb-1">
                                         Email Address
                                     </h4>
-                                    <p class="text-base text-body-color">info@yourdomain.com</p>
+                                    <p className="text-base text-body-color">info@yourdomain.com</p>
                                 </div>
                             </div>
                         </div>

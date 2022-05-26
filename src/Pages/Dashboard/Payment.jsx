@@ -13,7 +13,7 @@ const Payment = () => {
     const { id } = useParams();
     console.log(id);
     const { isLoading, error, data } = useQuery(["paymentorders", id], async () => {
-        return await axiosPrivate.get(`http://localhost:5000/order/${id}`)
+        return await axiosPrivate.get(`https://obscure-tor-98631.herokuapp.com/order/${id}`)
     });
 
     if (isLoading) {

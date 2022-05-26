@@ -4,6 +4,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axiosPrivate from '../../Api/axiosPrivate';
 import auth from '../../firebase.config';
 
@@ -34,9 +35,18 @@ const AddReview = () => {
                     };
                     (async () => {
                         try {
-                            const { data } = await axiosPrivate.post('http://localhost:5000/reviews', (review))
+                            const { data } = await axiosPrivate.post('https://obscure-tor-98631.herokuapp.com/reviews', (review))
                             if (data) {
-                                reset()
+                                reset();
+                                toast.success('review added', {
+                                    position: "top-right",
+                                    autoClose: 500,
+                                    hideProgressBar: true,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                    });
                             }
                         } catch (error) {
                             if(error.status === 401 || 403){

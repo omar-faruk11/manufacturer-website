@@ -11,7 +11,7 @@ const useToken = (user) => {
         const currentUser = { email, name };
        if(email){
         (async () => {
-            const { data } = await axios.put(`http://localhost:5000/users/${email}`,(currentUser));
+            const { data } = await axios.put(`https://obscure-tor-98631.herokuapp.com/users/${email}`,(currentUser));
             if (data) {
                 const accessToken = data.token;
                 localStorage.setItem('accessToken', accessToken);

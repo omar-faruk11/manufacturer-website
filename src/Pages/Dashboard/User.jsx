@@ -8,7 +8,7 @@ const User = ({ user, index, refetch }) => {
     const handleMakeAdmin = (email) => {
         (async () => {
             try {
-                const { data } = await axiosPrivate.put(`http://localhost:5000/users/admin/${email}`)
+                const { data } = await axiosPrivate.put(`https://obscure-tor-98631.herokuapp.com/users/admin/${email}`)
                 if (data.acknowledged === true) {
                     refetch();
                     toast.success('Successfully made an admin', {

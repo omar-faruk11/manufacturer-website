@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleSingIn from '../../Components/GoogleSingIn';
@@ -22,6 +22,12 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [token] = useToken(user);
+    useEffect(()=>{
+        if (token) {
+            navigate(from, { replace: true });
+            
+        };
+    },[token,from,navigate]);
     let registererror;
 
     if (loading || updating) {
@@ -34,10 +40,7 @@ const Register = () => {
         registererror = <span className="label-text-alt text-red-500">{error.message || updateError.message}</span>
     };
 
-    if (token) {
-        navigate(from, { replace: true });
-        // navigate('/');
-    };
+    
 
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password);

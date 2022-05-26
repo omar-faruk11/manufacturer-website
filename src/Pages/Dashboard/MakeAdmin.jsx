@@ -6,7 +6,7 @@ import User from './User';
 
 const MakeAdmin = () => {
     const { isLoading, error, data, isFetching ,refetch} = useQuery("users", async () => {
-        return await axiosPrivate.get('http://localhost:5000/users')
+        return await axiosPrivate.get('https://obscure-tor-98631.herokuapp.com/users')
     });
     if (isLoading) {
         return <Loading />

@@ -5,52 +5,23 @@ import { toast } from 'react-toastify';
 import axiosPrivate from '../../Api/axiosPrivate';
 
 
-const OrderDeleteModal = ({id, refetch }) => {
-        const handleProuductDelete = () =>{
-        (async () => {
-            try {
-                const { data } = await axiosPrivate.delete(`http://localhost:5000/orders/${id}`);
-                console.log(data);
-                if (data.acknowledged === true) {
-                    refetch();
-                    toast.success('Product deleted', {
-                        position: "top-right",
-                        autoClose: 500,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        });
-                }
-            } catch (error) {
-                if (error.status === 403 ) {
-                    toast.error('Failed to delete', {
-                        position: "top-right",
-                        autoClose: 500,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        });
-                }
-            }
-        })();
-    }
+
+const OrderDeleteModal = ({deleted, refetch,setdelete }) => {
+         const {_id} = deleted;
+       
     return (
         <>
-            <input type="checkbox" id="deleteorder" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box w-16">
+            <input type="checkbox" id="deleteorder" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box w-16">
                 <div className=' flex justify-center my-4'>
                     <FontAwesomeIcon className="w-8 h-8 text-red-500" icon={faTrash}/>
                 </div>
-                    <h3 class="font-bold text-lg text-center">Are your sure You want to delete Order.</h3>
-                    <div class="modal-action justify-center">
+                    <h3 className="font-bold text-lg text-center">Are your sure You want to delete Order.</h3>
+                    <div className="modal-action justify-center">
                         <div>
-                        <label for="deleteorder" class="btn btn-sm btn-outline mx-2 rounded-sm ">Cencel</label>
-                        <label for="deleteorder"  onClick={handleProuductDelete} class="btn btn-sm btn-error  mx-2 rounded-sm ">Confirma </label>
+                        <label for="deleteorder" className="btn btn-sm btn-outline mx-2 rounded-sm ">Cencel</label>
+                        <label for="deleteorder" className="btn btn-sm bg-red-500  mx-2 rounded-sm ">Confirma </label>
                         </div>
                     </div>
                 </div>

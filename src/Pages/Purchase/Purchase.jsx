@@ -16,7 +16,7 @@ const Purchase = () => {
     const { register, handleSubmit, watch, control, getValues, setValue,reset, formState: { errors } } = useForm({ mode: 'onChange' });
 
     const { isLoading, error, data, isFetching } = useQuery(["repoData", id], async () => {
-        return await axios.get(`http://localhost:5000/parts/${id}`)
+        return await axios.get(`https://obscure-tor-98631.herokuapp.com/parts/${id}`)
     });
     
     useEffect(() => {
@@ -59,7 +59,7 @@ const Purchase = () => {
 
         };
         (async () => {
-            const { data } = await axios.post('http://localhost:5000/orders', (order))
+            const { data } = await axios.post('https://obscure-tor-98631.herokuapp.com/orders', (order))
                 if (data) {
                     toast.success('Order Send', {
                         position: "top-right",
@@ -81,12 +81,12 @@ const Purchase = () => {
         <div className='md:mx-44 my-16'>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
                 <div className="">
-                    <div class="card  bg-base-100 shadow-xl">
-                        <figure class="px-10 pt-10">
-                            <img src={picture} alt="Shoes" class="rounded-xl" />
+                    <div className="card  bg-base-100 shadow-xl">
+                        <figure className="px-10 pt-10">
+                            <img src={picture} alt="Shoes" className="rounded-xl" />
                         </figure>
-                        <div class="card-body">
-                            <h2 class="card-title">{name}</h2>
+                        <div className="card-body">
+                            <h2 className="card-title">{name}</h2>
                             <p>{description}</p>
                             <p>Min Order: {min_order}</p>
                             <p>Available: {available}</p>
