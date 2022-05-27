@@ -36,7 +36,7 @@ const Register = () => {
 
 
     if (error || updateError) {
-        console.log(error.message);
+       
         registererror = <span className="label-text-alt text-red-500">{error.message || updateError.message}</span>
     };
 

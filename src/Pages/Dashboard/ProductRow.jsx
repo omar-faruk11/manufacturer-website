@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axiosPrivate from '../../Api/axiosPrivate';
+import Modal from '../../Components/Modal';
 
 const ProductRow = ({ product, refetch }) => {
-
+    const [deleteProduct, setDeleteProduct] = useState(null);
     const {_id, name, picture, available, price } = product;
     const handleProuductDelete = () =>{
         const confirm = window.confirm('Are you sure?');
@@ -11,7 +12,7 @@ const ProductRow = ({ product, refetch }) => {
             (async () => {
                 try {
                     const { data } = await axiosPrivate.delete(`https://obscure-tor-98631.herokuapp.com/parts/${_id}`);
-                    console.log(data);
+                    
                     if (data.acknowledged === true) {
                         refetch();
                         toast.success('Product deleted', {
@@ -60,8 +61,11 @@ const ProductRow = ({ product, refetch }) => {
                {price}
             </td>
             <td className="px-6 py-4 text-right">
-            <label onClick={handleProuductDelete} for="confirma" className='btn btn-error btn-sm rounded-md text-base-100'>Delete</label>
+            <label onClick={()=>setDeleteProduct(product)} for="confirma" className='btn btn-error btn-sm rounded-md text-base-100'>Delete</label>
             </td>
+            {
+                deleteProduct&&<Modal deleteProduct={deleteProduct} setDeleteProduct={setDeleteProduct} refetch={refetch}/>
+            }
         </tr>
     );
 };

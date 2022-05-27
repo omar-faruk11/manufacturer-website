@@ -44,7 +44,7 @@ const Purchase = () => {
     const { _id, name, picture, description, min_order, available, price } = data?.data;
 
 
-    console.log(totalPrice);
+   
 
 
     const onSubmit = async (data) => {

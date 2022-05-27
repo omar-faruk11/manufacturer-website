@@ -7,7 +7,7 @@ import useAdmin from '../../Hooks/useAdmin'
 const Dashboard = () => {
     const [user] = useAuthState(auth)
     const [admin] = useAdmin(user);
-    console.log(admin);
+    
     useEffect(() => {
         window.scroll({
             top: 0,

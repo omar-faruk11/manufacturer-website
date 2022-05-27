@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 const Part = ({ part }) => {
     const navigate = useNavigate();
     const {_id, name, picture, description, min_order, available, price } = part;
-    console.log(available, min_order);
+   
     return (
         <div>
             <div className="card card-compact h-full bg-base-100 shadow-xl">

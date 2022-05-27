@@ -3,7 +3,7 @@ import loading from '../Assets/Images/loading.svg'
 
 const Loading = () => {
     return (
-        <div className=' h-screen w-full flex justify-center items-center flxed'>
+        <div className=' h-screen w-full flex justify-center items-center'>
             <img src={loading} alt="" />
         </div>
     );

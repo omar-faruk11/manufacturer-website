@@ -11,7 +11,6 @@ const stripePromise = loadStripe('pk_test_51L3Fp1IjxtgD4oeXTqiApOHtHeSKHRXD6BocM
 
 const Payment = () => {
     const { id } = useParams();
-    console.log(id);
     const { isLoading, error, data } = useQuery(["paymentorders", id], async () => {
         return await axiosPrivate.get(`https://obscure-tor-98631.herokuapp.com/order/${id}`)
     });

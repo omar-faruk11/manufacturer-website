@@ -13,19 +13,22 @@ import OrderDeleteModal from './OrderDeleteModal'
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    // const [deleted, setdelete] = useState(null)
     const { isLoading, error, data, isFetching, refetch } = useQuery(["MyOrders", user], async () => {
         return await axiosPrivate.get(`https://obscure-tor-98631.herokuapp.com/uorders?email=${user.email}`)
     });
 
-    if (isLoading) {
+    if (isFetching || isLoading) {
         return <Loading />
     };
-    if (error?.response?.status === (401 || 403)) {
-        signOut(auth);
-        localStorage.removeItem('accessToken');
-        navigate('/');
-    };
+    
+    if (error) {
+        if (error.response.status === (403 || 401)) {
+            signOut(auth);
+            localStorage.removeItem('accessToken');
+            navigate('/login');
+        }
+
+    }
     
     return (
         <div>
@@ -65,9 +68,7 @@ const MyOrders = () => {
                                 }
                             </tbody>
                         </table>
-                        {/* {
-                            deleted&&<OrderDeleteModal deleted={deleted} setdelete={setdelete} refetch={refetch}/>
-                        } */}
+                        
                     </div>
                 </div>
             </div>

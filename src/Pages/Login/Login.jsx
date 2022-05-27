@@ -21,7 +21,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const onSubmit = data => {
-        console.log(data);
+       
         signInWithEmailAndPassword(data.email, data.password);
 
     };

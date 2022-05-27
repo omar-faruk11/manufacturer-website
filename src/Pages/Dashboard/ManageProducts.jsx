@@ -4,15 +4,27 @@ import { useQuery } from 'react-query';
 import Loading from '../../Components/Loading';
 import ProductRow from './ProductRow';
 import Modal from '../../Components/Modal';
+import auth from '../../firebase.config';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 
 const ManageProducts = () => {
-    // const [deleteProduct, setDeleteProduct] = useState(null);
+    const navigate = useNavigate();
+    
     const { isLoading, error, data, isFetching ,refetch} = useQuery("Proudctokparts", async () => {
         return await axios.get('https://obscure-tor-98631.herokuapp.com/parts')
     });
-    if (isLoading) {
+    if (isFetching || isLoading) {
         return <Loading />
+    };
+    if (error) {
+        if (error.response.status === (403 || 401)) {
+            signOut(auth);
+            localStorage.removeItem('accessToken');
+            navigate('/login');
+        }
+
     };
     return (
         <div>
@@ -49,9 +61,7 @@ const ManageProducts = () => {
                             </tbody>
                         </table>
                     </div>
-                    {/* {
-                        deleteProduct&&<Modal deleteProduct={deleteProduct} setDeleteProduct={setDeleteProduct} refetch={refetch}/>
-                    } */}
+                    
                 </div>
             </div>
         </div>

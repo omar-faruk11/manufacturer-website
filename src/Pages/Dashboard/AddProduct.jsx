@@ -1,12 +1,15 @@
 import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosPrivate from '../../Api/axiosPrivate';
 import auth from '../../firebase.config';
 
 const AddProduct = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const [user, loading] = useAuthState(auth);
     const imgStoageKey = 'ec4d0c0ce230e885ea68445e705213d3';
@@ -32,7 +35,7 @@ const AddProduct = () => {
                         price : productdata.price,
                         picture: picture
                     };
-                    console.log(product);
+                   
                         (async () => {
                             const { data } = await axiosPrivate.post('https://obscure-tor-98631.herokuapp.com/parts',(product))
                             if (data) {
@@ -52,7 +55,11 @@ const AddProduct = () => {
                 }
             }
             catch (error) {
-                console.log(error);
+                if (error.response.status === (403 || 401)) {
+                    signOut(auth);
+                    localStorage.removeItem('accessToken');
+                    navigate('/login');
+                }
             }
         })();
     }

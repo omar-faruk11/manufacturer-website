@@ -2,7 +2,7 @@ import React from 'react';
 
 const MyPortfolio = () => {
     return (
-        <div className='h-screen w-full flex justify-center items-center'>
+        <div className='h-screen w-full flex justify-center items-center mt-10'>
             <div className="w-full md:w-2/5 p-8 shadow-md rounded-md">
                 <div className="flex justify-center">
                     <img className='w-16 rounded-full' src="https://react-firebase-assignmen-6de9d.web.app/static/media/omar.7efc6cc95ff79aadcebc.jpg" alt="" />

@@ -49,8 +49,9 @@ const AddReview = () => {
                                     });
                             }
                         } catch (error) {
-                            if(error.status === 401 || 403){
+                            if (error.response.status === (403 || 401)) {
                                 signOut(auth);
+                                localStorage.removeItem('accessToken');
                                 navigate('/login');
                             }
                         }
@@ -59,7 +60,7 @@ const AddReview = () => {
                 };
             }
             catch (error) {
-                console.log(error);
+                
             };
         })();
 

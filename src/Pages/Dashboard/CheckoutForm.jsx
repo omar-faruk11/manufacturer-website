@@ -1,10 +1,12 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import axiosPrivate from '../../Api/axiosPrivate';
+import Loading from '../../Components/Loading';
 
 
 
 const CheckoutForm = ({order}) => {
+    const [loading, setLoading] = useState(false)
     const [clientSecret, setClientSecret] = useState('');
     const [success, setSuccess] = useState('');
     const [transactionId, setTransactionId] = useState('');
@@ -23,6 +25,7 @@ const CheckoutForm = ({order}) => {
     const [cardError, setCardError] = useState('')
     const stripe = useStripe();
     const elements = useElements();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -41,6 +44,7 @@ const CheckoutForm = ({order}) => {
 
         setCardError(error?.message || ' ');
         setSuccess('');
+        setLoading(true)
         const {paymentIntent, error:paymentError} = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -56,6 +60,7 @@ const CheckoutForm = ({order}) => {
          
         if (paymentError) {
             setCardError(paymentError?.message);
+            setLoading(false)
             
         }else{
             setCardError('');
@@ -68,12 +73,13 @@ const CheckoutForm = ({order}) => {
             (async ()=>{
                 const {data} = await axiosPrivate.patch(`https://obscure-tor-98631.herokuapp.com/orders/${_id}`,(payment));
                 if(data){
-                    console.log(data);
+                    setLoading(false)
                 }
             })();
             
         }
     }
+    
     return (
         <>
             <form onSubmit={handleSubmit}>
