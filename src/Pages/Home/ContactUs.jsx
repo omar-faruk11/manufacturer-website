@@ -131,7 +131,27 @@ const ContactUs = () => {
                                 </div>
                             </div>
                             <div className="flex mb-8 max-w-[370px] w-full">
-
+                                <div
+                                    className="
+                     max-w-[60px]
+                     sm:max-w-[70px]
+                     w-full
+                     h-[60px]
+                     sm:h-[70px]
+                     flex
+                     items-center
+                     justify-center
+                     mr-6
+                     overflow-hidden
+                     bg-primary bg-opacity-5
+                     text-primary
+                     rounded
+                     "
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
                                 <div className="w-full">
                                     <h4 className="font-bold text-dark text-xl mb-1">
                                         Email Address
